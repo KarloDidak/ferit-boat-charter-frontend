@@ -15,18 +15,13 @@ const notifyPogresnaPrijava = () => toast.error("Mail ili sifra nisu točni!")
 
 export function validateNepotpunaPrijava(tempMail){
     var mailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;       
-    
     if (tempMail.match(mailPattern)) {
-       
          return true;
-       
       }else{
         notifyPogresnaPrijava();
         return false;
       }
-
   }
-
 
 const Login = (props) => {    
 

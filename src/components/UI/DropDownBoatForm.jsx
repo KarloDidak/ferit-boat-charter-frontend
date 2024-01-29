@@ -93,9 +93,9 @@ useEffect(()=>{
             <Select
                 placeholder="Vrsta plovila"
                 className="basic-single"
-            //   defaultValue={boatOptions[0]}
                 isClearable={isClearable}
                 isSearchable={isSearchable}
+            //   defaultValue={boatOptions[0]}
             //  name="color"
                 onChange={(update) => {
                   setOdabranaVrstaBroda(update);
