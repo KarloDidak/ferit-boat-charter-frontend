@@ -1,0 +1,40 @@
+.info-container
+{
+    padding-top: 35px;
+}
+
+.div-info{
+    display: flex;
+    flex-direction: row;
+}
+
+.info-item{
+    order: 3;
+}
+
+
+.outer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 200px;
+ /*   width: 300px;
+    */
+}
+
+.div {
+    flex: 0 0 50px;
+    margin: 5px;
+  /*  background-color: rgba(0, 128, 0, 0.218); */
+    text-align: center;
+}
+
+.menu-text
+{
+    padding-top: 20px;
+    color: #000d6b;
+}
+
+a:link{
+    text-decoration: none;
+}

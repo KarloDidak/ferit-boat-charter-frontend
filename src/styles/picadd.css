@@ -1,0 +1,27 @@
+
+.postavljanjeSlika{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 100%;
+    display: flex;    
+    justify-content: center;    
+    align-items: baseline;
+    gap: 20px;
+}
+
+.odabiranjeSlikeBttn{
+    margin: 0;
+    width: 30%;
+}
+
+.dohvacenaSlika{
+    width: 100px;
+    height:100px;
+/*   margin-right: 20px; */ 
+}
+
+.postavljanjeSlikaBttn{
+    background: #000d6b !important;
+    color: #fff !important;
+    height: 65%;
+}

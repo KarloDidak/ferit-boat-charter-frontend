@@ -1,0 +1,93 @@
+.boat__item {
+  border: 1px solid #000d6b;
+  border-radius: 5px;
+}
+
+.boat__item-btn {
+  border-radius: 0;
+  border: none;
+  outline: none;
+  padding: 8px 0px;
+  
+  text-decoration: none;
+  color: #000d6b;
+  font-weight: 500;
+
+  border-radius: 0px 0px 4px 4px;
+}
+
+.boat__item-content h4 {
+  font-size: 1.8rem;
+}
+
+.boat__item-content h6 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.boat__item-info-first
+{
+  margin-left: 20px;
+}
+
+.boat__item-info-third
+{
+  margin-right: 20px;
+}
+
+/*
+@media only screen and (max-width: 992px) {
+  .boat__item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+
+  .boat__item h6 {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .boat__item-info {
+    flex-wrap: wrap;
+    
+  }
+
+
+  .boat__item-info span {
+    font-size: 0.8rem;
+    justify-content: space-between;
+  }
+
+
+  .boat__item-btn {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+}
+*/
+
+/*
+@media only screen and (max-width: 768px) {
+  .boat__item h4 {
+    font-size: 1rem;
+  }
+
+  .boat__item h6 {
+    font-size: 0.9rem;
+  }
+
+  .boat__item-info span {
+    font-size: 0.7rem;
+  }
+
+  .boat__item-info span i {
+    font-size: 0.9rem;
+  }
+
+  .boat__item-btn {
+    font-size: 0.8rem;
+  }
+
+  
+}
+*/
