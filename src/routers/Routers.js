@@ -12,9 +12,10 @@ import Register from "../pages/Register";
 import Home from "../pages/Home";
 import NewBoatForm from "../pages/NewBoatForm";
 import PictureAdd from "../components/UI/PictureAdd";
-import PrijeKosarica from "../pages/PrijeKosarica";
+import Kosarica from "../pages/Kosarica";
 import ProtectedRoutersIznajmljivac from "./ProtectedRouteresIznajmljivac";
 import ProtectedRoutersUnajmiteljAdmin from "./ProtectedRoutersUnajmiteljAdmin"; 
+import PrijeKosarica from "../pages/PrijeKosarica";
 
 const Routers = () => {
     return (
@@ -36,9 +37,10 @@ const Routers = () => {
             </Route>
 
             <Route element={<ProtectedRoutersIznajmljivac />} >
+                <Route path="/kosarica/:slug1" element={<Kosarica />} />
                 <Route path="/prijeKosarica/:slug1" element={<PrijeKosarica />} />
             </Route>
-        </Routes>
+        </Routes>   
     );
 };
 

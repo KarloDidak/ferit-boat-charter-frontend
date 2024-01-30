@@ -10,8 +10,8 @@ const IznajmljivacHeader = ({logoutFun}) => {
     return(
         <>
             <button  style={{marginRight:'20px'}} className="header__btn btn" >
-            <Link to="/prijeKosarica">
-                Kosarica
+            <Link to="/">
+                Moji najmovi
             </Link>
             </button>
             <button className="header__btn btn" onClick={() => {

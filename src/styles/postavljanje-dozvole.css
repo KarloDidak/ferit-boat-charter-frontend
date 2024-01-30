@@ -6,6 +6,21 @@
     justify-content: center;    
     align-items: baseline;
     gap: 20px;
-/*    border: solid #000d6b;
-*/
+}
+
+#dozvolaInput{
+    padding: 2%;
+    border: solid #000d6b;
+    border-radius: 20px;
+}
+
+.dozvolaAddText{
+    margin-top: 5%;
+    display: flex;    
+    justify-content: center;    
+    align-items: baseline;
+}
+
+.dozvolaTextHeader{
+    text-align: center;
 }
