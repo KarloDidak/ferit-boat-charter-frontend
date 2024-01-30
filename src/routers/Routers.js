@@ -16,6 +16,7 @@ import Kosarica from "../pages/Kosarica";
 import ProtectedRoutersIznajmljivac from "./ProtectedRouteresIznajmljivac";
 import ProtectedRoutersUnajmiteljAdmin from "./ProtectedRoutersUnajmiteljAdmin"; 
 import PrijeKosarica from "../pages/PrijeKosarica";
+import MojiNajmovi from "../pages/MojiNajmovi";
 
 const Routers = () => {
     return (
@@ -39,6 +40,7 @@ const Routers = () => {
             <Route element={<ProtectedRoutersIznajmljivac />} >
                 <Route path="/kosarica/:slug1" element={<Kosarica />} />
                 <Route path="/prijeKosarica/:slug1" element={<PrijeKosarica />} />
+                <Route path="/mojiNajmovi" element={<MojiNajmovi/>} />
             </Route>
         </Routes>   
     );

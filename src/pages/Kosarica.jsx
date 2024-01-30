@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import DozvolaAdd from "../components/UI/DozvolaAdd";
 import axios from "axios";
 import "../styles/prije-kosarice.css"
 import { useParams, useNavigate } from "react-router-dom";
@@ -15,6 +14,8 @@ const Kosarica = () => {
   const notifyUspjesanNajam = () => toast.success("Brod uspješno iznajmljen!")
   const notifyNajamDatum = () => toast.warning("Datumi najma moraju biti određeni!")
   const navigate = useNavigate();
+
+    const korisnikId = localStorage.getItem('userId');
 
     const [dateRange, setDateRange] = useState([null, null]); 
     const [zauzetOd, zauzetDo] = dateRange;
@@ -40,8 +41,6 @@ const Kosarica = () => {
 
     const brodId = brod.id;
     const[najmovi, setNajmovi] = useState();
-    const[najmoviDatum1, setNajmoviDatum1] = useState()
-    const[najmoviDatum2, setNajmoviDatum2] = useState()
 
     const getNajmovi = {
         method:"GET",
@@ -107,11 +106,13 @@ const Kosarica = () => {
   
     return 1;
     }
+
+    const [cijena, setCijena] = useState(0)
     
     const handleSubmitNajam = (e) => {
         e.preventDefault();
         if(validateHandleSubmitNajam() == 1){
-        const najam = {brodId, zauzetOd, zauzetDo}
+        const najam = {brodId, zauzetOd, zauzetDo, korisnikId, cijena}
         fetch("http://localhost:8080/najam/add",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
@@ -123,19 +124,11 @@ const Kosarica = () => {
         }
       }
 
-      const [cijena, setCijena] = useState(0)
-
       useEffect(() => {
         var diffInMilliseconds = Math.abs(zauzetDo - zauzetOd);
         var diffInDays  = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24));
         setCijena(brod.cijena * diffInDays)
       },[zauzetDo])
-
-      function calculateDifference() {
-        const diffInMilliseconds = Math.abs(zauzetDo - zauzetOd);
-        const diffInDays  = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24));
-        return diffInDays;
-      }
 
   
     return(

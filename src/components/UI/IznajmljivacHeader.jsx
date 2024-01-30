@@ -10,7 +10,7 @@ const IznajmljivacHeader = ({logoutFun}) => {
     return(
         <>
             <button  style={{marginRight:'20px'}} className="header__btn btn" >
-            <Link to="/">
+            <Link to="/mojiNajmovi">
                 Moji najmovi
             </Link>
             </button>

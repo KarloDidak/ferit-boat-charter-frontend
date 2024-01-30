@@ -14,7 +14,6 @@ const DozvolaAdd = (ime) => {
     const nemaDozvole = () => toast.warning("Morate postaviti sliku dozvole!")
 
    const[file, setFile] = useState("");
-   const[slikaGled, setSlikaGled] = useState("");
 
     const[korisnikPostojecaDozvola, setKorisnikPostojecaDozvola] = useState("");
 
@@ -34,6 +33,7 @@ const DozvolaAdd = (ime) => {
     })
     }, [])
 
+    
 
 const handleSubmitDozvola = (e) => {
     e.preventDefault()
