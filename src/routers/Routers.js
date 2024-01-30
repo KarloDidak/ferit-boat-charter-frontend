@@ -13,6 +13,8 @@ import Home from "../pages/Home";
 import NewBoatForm from "../pages/NewBoatForm";
 import PictureAdd from "../components/UI/PictureAdd";
 import PrijeKosarica from "../pages/PrijeKosarica";
+import ProtectedRoutersIznajmljivac from "./ProtectedRouteresIznajmljivac";
+import ProtectedRoutersUnajmiteljAdmin from "./ProtectedRoutersUnajmiteljAdmin"; 
 
 const Routers = () => {
     return (
@@ -20,7 +22,6 @@ const Routers = () => {
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home/>} />
             <Route path="/boats" element={<BoatListing />} />
-            <Route path="/novi-brod-forma" element={<NewBoatForm/>} />
             <Route path="/contact" element={<Contact/>} />
             <Route path="/boats/:slug1/:slug2" element={<BoatDetails />} />
             <Route path="/kako-unajmiti-plovilo" element={<KakoUnajmitiPlovilo />} />
@@ -28,8 +29,15 @@ const Routers = () => {
             <Route path="/vrste-najma" element={<VrsteNajma />} />
             <Route path="/prijava" element={<LogRegSelect />} />
             <Route path="/registracija" element={<Register />} />
-            <Route path="/dodajSliku/:slug" element={<PictureAdd />} />
-            <Route path="/prijeKosarica/:slug1" element={<PrijeKosarica />} />
+            
+            <Route element={<ProtectedRoutersUnajmiteljAdmin />} >
+                <Route path="/novi-brod-forma" element={<NewBoatForm/>} />
+                <Route path="/dodajSliku/:slug" element={<PictureAdd />} />
+            </Route>
+
+            <Route element={<ProtectedRoutersIznajmljivac />} >
+                <Route path="/prijeKosarica/:slug1" element={<PrijeKosarica />} />
+            </Route>
         </Routes>
     );
 };

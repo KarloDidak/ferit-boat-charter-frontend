@@ -246,7 +246,7 @@ const handleSubmit = (e) => {
             <div className="col-md-3">
                 <form className="login-form">
                     <label>Gaz</label>
-                    <input className="newBoat-Input" type="number" step=".01"  value={gaz} onChange={(e) => setGaz(e.target.value)} placeholder="" maxLength={4}></input>
+                    <input className="newBoat-Input" type="text" maxlength="4"  value={gaz} onChange={(e) => setGaz(e.target.value)} placeholder="" ></input>
                 </form>
             </div>
 
