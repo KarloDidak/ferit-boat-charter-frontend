@@ -56,6 +56,29 @@ const Kosarica = () => {
       });
     }, [brodId]);   
 
+
+    const [allUserNajam, setAllUserNajam] = useState();
+
+    const dohvacanjeUserNajam = {
+      method:"GET",
+      url: "http://localhost:8080/najam/getNajamWithUserId",
+      params:{
+          korisnikId: korisnikId
+      }
+    }
+  
+    useEffect(() => {
+        axios.request (dohvacanjeUserNajam).then((response) => {
+          setAllUserNajam(response.data)
+    }).catch((error) => {
+        console.error(error);
+    })
+    }, [])
+
+    
+    console.log(allUserNajam)
+
+
     const[compareDate1, setCompareDate1] = useState() 
     const[compareDate2, setCompareDate2] = useState()
 
@@ -81,21 +104,30 @@ const Kosarica = () => {
     var finalEx = [];
 
         useEffect(() => {
-            if(najmovi !== undefined){ 
-                var tmp = [...datesExcludeSlobodanOd, ...datesExcludeSlobodanDo]
+          var tmp = [...datesExcludeSlobodanOd, ...datesExcludeSlobodanDo]
+            if(najmovi !== undefined){    
                 for (let index = 0; index < najmovi.length; index++) {
                     var zauzetOdTemp = new Date(najmovi[index].zauzetOd)
                     var zauzetDoTemp = new Date(najmovi[index].zauzetDo)
                     var datesTmp = getDatesInbetween(zauzetOdTemp, zauzetDoTemp)
                     finalEx = finalEx.concat(datesTmp);
                 }
-                setFinalExclude([...finalEx,...tmp])
             }
+
+            if (allUserNajam !== undefined) {
+              for (let index = 0; index < allUserNajam.length; index++) {
+                var zauzetOdUserTemp = new Date(allUserNajam[index].zauzetOd)
+                var zauzetDoUserTemp = new Date(allUserNajam[index].zauzetDo)
+                var datesUserTmp = getDatesInbetween(zauzetOdUserTemp, zauzetDoUserTemp)
+                finalEx = finalEx.concat(datesUserTmp);
+              }
+          }
+
+          setFinalExclude([...finalEx,...tmp])
         }, [najmovi])
 
 
     function validateHandleSubmitNajam( ){
-
         if (zauzetOd == null) {
           notifyNajamDatum();
           return 0;
@@ -103,7 +135,6 @@ const Kosarica = () => {
           notifyNajamDatum();
           return 0;
         }
-  
     return 1;
     }
 

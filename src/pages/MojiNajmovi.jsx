@@ -25,11 +25,16 @@ const MojiNajmovi = () => {
     })
     }, [])
 
-   
+    
+    var najamCheck = true;
+    if(najamBrod.length == 0) najamCheck = false;
+
     return(
         <div>
 
             <h2 className="najamContainer" > MOJI NAJMOVI </h2>
+
+            {najamCheck ? <p></p> : <h5 className="najamContainer" id="nemaRezervacije" >NEMATE NITI JEDNU REZERVACIJU</h5>}
 
             {najamBrod.map((item) => (
                 <MojiNajmoviItem item={item} key={item.id} />
