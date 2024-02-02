@@ -11,7 +11,7 @@ const MojiNajmovi = () => {
 
       const dohvacanjeNajamBrod = {
         method:"GET",
-        url: "http://localhost:8080/najamBrod/getWithUserId",
+        url: "http://ferit-boat-charter-backened-production.up.railway.app/najamBrod/getWithUserId",
         params:{
             korisnikId: korisnikId
         }

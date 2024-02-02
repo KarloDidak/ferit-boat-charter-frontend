@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Select from 'react-select'
-import { Form, FormFeedback, FormGroup } from "reactstrap";
+import { Form, FormGroup } from "reactstrap";
 
 import { dateToNumber } from "../../hooks/dateChangers";
 
@@ -31,7 +31,7 @@ useEffect(()=>{
 const[vrsteBroda, setVrsteBroda]=useState([])
 
 useEffect(()=>{
-  fetch("http://localhost:8080/vrste-broda/getAll")
+  fetch("http://ferit-boat-charter-backened-production.up.railway.app/vrste-broda/getAll")
   .then(res=>res.json())
   .then((result)=>{
 

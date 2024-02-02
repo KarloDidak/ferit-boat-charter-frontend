@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import React, {useState, useContext } from "react";
+import {useNavigate} from "react-router-dom";
 import "../styles/login-register.css";
 import axios from "axios";
-import { RiCreativeCommonsZeroLine } from "react-icons/ri";
 import { MyContext } from "../App";
 
 import { toast } from "react-toastify";
@@ -69,10 +68,7 @@ const Login = (props) => {
 
     const getUserId = {
         method:"GET",
-        url: "http://localhost:8080/korisnik/getUserId",
-        headers:{
-            'Access-Control-Allow-Origin': '*'
-        },
+        url: "http://ferit-boat-charter-backened-production.up.railway.app/korisnik/getUserId",
         params:{
             email: email,
             pass: pass
@@ -82,7 +78,7 @@ const Login = (props) => {
 
     const checkIfUserExist = {
         method:"GET",
-        url: "http://localhost:8080/korisnik/checkIfUserExistandGetUserStatus",
+        url: "http://ferit-boat-charter-backened-production.up.railway.app/korisnik/checkIfUserExistandGetUserStatus",
         headers:{
             'Access-Control-Allow-Origin': '*'
         },
@@ -91,6 +87,7 @@ const Login = (props) => {
             pass: pass
         },
       }
+
 
     return(
         <div className="auth-form-container">

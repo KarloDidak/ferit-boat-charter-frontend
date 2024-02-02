@@ -121,7 +121,7 @@ const Register = (props) => {
     const[showPassword, setShowPassword] = useState(false)
 
     useEffect(()=>{
-        fetch("http://localhost:8080/vrsta-korisnika/getAll")
+        fetch("http://ferit-boat-charter-backened-production.up.railway.app/vrsta-korisnika/getAll")
         .then(res=>res.json())
         .then((result)=>{
       
@@ -142,7 +142,7 @@ const Register = (props) => {
           if(validateStatus(status) == true){
           const korisnik = {ime, mail, sifra, status}
           console.log(korisnik);
-          fetch("http://localhost:8080/korisnik/add",{
+          fetch("http://ferit-boat-charter-backened-production.up.railway.app/korisnik/add",{
               method:"POST",
               headers:{"Content-Type":"application/json"},
               body:JSON.stringify(korisnik) 
@@ -188,7 +188,7 @@ const Register = (props) => {
             />
             <button onClick={handleSubmit} > Registracija </button>
         
-        <button className="link-btn" onClick={() => props.onFormSwitch('login')} > Već imate račun ? Prijavite se </button>
+        <button className="link-btn" onClick={() => navigate('/prijava')} > Već imate račun ? Prijavite se </button>
         </div>
       </div>
     );

@@ -1,9 +1,7 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useEffect, useState} from "react";
 import Select from 'react-select'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/new-boat-form.css"
-import { MyContext } from "../App";
-import { FormGroup } from "reactstrap";
 import { dateToNumber } from "../hooks/dateChangers";
 
 import DatePicker from 'react-datepicker';
@@ -23,7 +21,7 @@ export default () => {
     const userId =localStorage.getItem('userId')
 
 useEffect(()=>{
-  fetch("http://localhost:8080/vrste-broda/getAll")
+  fetch("http://ferit-boat-charter-backened-production.up.railway.app/vrste-broda/getAll")
   .then(res=>res.json())
   .then((result)=>{
 
@@ -39,7 +37,7 @@ useEffect(()=>{
 const[vrstePosade, setvrstePosade]=useState([])
 
 useEffect(()=>{
-  fetch("http://localhost:8080/vrste-posade/getAll")
+  fetch("http://ferit-boat-charter-backened-production.up.railway.app/vrste-posade/getAll")
   .then(res=>res.json())
   .then((result)=>{
 
@@ -133,7 +131,7 @@ const handleSubmit = (e) => {
     if(validateNewBoatForma() == 1){
     const brod = {ime, cijena, tip, regija, godina,  kabine, lezajevi, posada, motor, gaz, duljinaPrekoSvega, tus, brzina, opis, userId, slobodanOd, slobodanDo}
     console.log(brod);
-    fetch("http://localhost:8080/brod/add",{
+    fetch("http://ferit-boat-charter-backened-production.up.railway.app/brod/add",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(brod) 
@@ -144,7 +142,6 @@ const handleSubmit = (e) => {
     }
   }
 
-    const [isClearable] = useState(true);
     const [isSearchable] = useState(true);
 
     return(

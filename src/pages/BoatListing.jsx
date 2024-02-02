@@ -16,13 +16,13 @@ const BoatListing = () => {
     var datDo = url.searchParams.get("endDatum")
     if(vrstaBroda || marina || (datOd && datDo)){
        console.log(vrstaBroda + " " + marina)
-       axios.get("http://localhost:8080/brod/getBrodForSearchForm",{
+       axios.get("http://ferit-boat-charter-backened-production.up.railway.app/brod/getBrodForSearchForm",{
         params:{tip_broda:vrstaBroda, regija:marina, slobodanOd:datOd, slobodanDo:datDo }
       }).then((response) => {setBrod(response.data);
       console.log(response)}) 
     }
     else{
-      fetch("http://localhost:8080/brod/getAll")
+      fetch("http://ferit-boat-charter-backened-production.up.railway.app/brod/getAll")
     .then(res=>res.json())
     .then((result)=>{
       setBrod(result);
