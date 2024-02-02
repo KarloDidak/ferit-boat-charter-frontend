@@ -1,13 +1,11 @@
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState} from "react";
 import { Container, Row, Col } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import { useParams } from "react-router-dom";
 import { RiMapPin2Line } from "react-icons/ri";
 import "../styles/boat-details.css";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import BrisanjeBroda from "../components/UI/BrisanjeBroda";
-import { MyContext } from "../App";
 import IznajmitButton from "../components/UI/IznajmitButton";
 
 const BoatDetails = () => {  

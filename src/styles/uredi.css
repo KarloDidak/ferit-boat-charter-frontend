@@ -1,0 +1,39 @@
+
+.urediNajamContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.urediNajamHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4%;
+}
+
+.produziNajam-bttn{
+    background-color: white;
+    color: #000d6b;
+    border: 2px solid #000d6b;
+    width: 20%;
+}
+
+
+#ostaviBrod-bttn{
+    margin-bottom: 4%;
+}
+
+.urediNajam-bttn-container{
+    display: flex;
+    justify-content:center;
+    margin-bottom: 4%;
+}
+
+.urediNajam-bttn{
+    background-color: #000d6b;
+    color: white;
+}

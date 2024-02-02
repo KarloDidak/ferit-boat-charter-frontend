@@ -59,21 +59,21 @@ function handleFileChange(e){
     if(e.target.files && e.target.files[0]) setFile(e.target.files[0]);
 }
 
-return(
-    <>
-    <div className="dozvolaAddText" >
-        {korisnikPostojecaDozvola ? 
+    return(
         <>
-        <h4 className="dozvolaTextHeader" > Već imamo vašu dozvolu. Ako želite postaviti drugu, možete. <br/> <br/> Inaće kliknite tipku DALJE. </h4>
+        <div className="dozvolaAddText" >
+            {korisnikPostojecaDozvola ? 
+            <>
+            <h4 className="dozvolaTextHeader" > Već imamo vašu dozvolu. Ako želite postaviti drugu, možete. <br/> <br/> Inaće kliknite tipku DALJE. </h4>
+            </>
+            : <h3 className="dozvolaTextHeader"> Postavite sliku svoje dozvole za upravljanje brodom. <br/> <br/> Odabrali ste brod bez posade. </h3>}
+        </div>
+    <form className="postavljanjeDozvole" onSubmit={handleSubmitDozvola} encType="multipart/form-data">
+        <input className="odabiranjeSlikeBttn" id="dozvolaInput" type="file" name="file" onChange={handleFileChange} />
+        <button type="submit" className="postavljanjeSlikaBttn"> DALJE</button>  
+    </form>
         </>
-        : <h3 className="dozvolaTextHeader"> Postavite sliku svoje dozvole za upravljanje brodom. <br/> <br/> Odabrali ste brod bez posade. </h3>}
-    </div>
-  <form className="postavljanjeDozvole" onSubmit={handleSubmitDozvola} encType="multipart/form-data">
-      <input className="odabiranjeSlikeBttn" id="dozvolaInput" type="file" name="file" onChange={handleFileChange} />
-      <button type="submit" className="postavljanjeSlikaBttn"> DALJE</button>  
-  </form>
-    </>
-)
+    )
 
 }
 

@@ -10,8 +10,14 @@
 }
 
 .otkaziBttn{
-    margin-left: 3%;
+    margin-left: 2%;
     background: #d20000 !important;
+    color: #fff !important;
+}
+
+.urediBttn{
+    margin-left: 10%;
+    background: #000d6b !important;
     color: #fff !important;
 }
 

@@ -75,10 +75,6 @@ const Kosarica = () => {
     })
     }, [])
 
-    
-    console.log(allUserNajam)
-
-
     const[compareDate1, setCompareDate1] = useState() 
     const[compareDate2, setCompareDate2] = useState()
 

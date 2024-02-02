@@ -3,10 +3,11 @@ import "../../styles/moji-najmovi-item.css";
 
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import {Link} from "react-router-dom";
 
 const MojiNajmoviItem = (props) => {
 
-    const {ime, cijena, najamId, zauzetOd, zauzetDo} = props.item;
+    const {ime, cijena, najamId, brodId, zauzetOd, zauzetDo} = props.item;
 
     const notifyUspjesnoOtkazivanjeNajma = () => toast.error("Najam uspješno otkazan!")
     const notifyPlacanjeKazne = () => toast.error("Do najma ima manje od 5 dana! Ako otkažete sad platit će te kaznu otkazivanja.")
@@ -19,7 +20,6 @@ const MojiNajmoviItem = (props) => {
 
     useEffect(() => {
         var diffInMilliseconds = Math.abs(today - zauzetOdFull);
-        console.log()
         var diffInDays  = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24));
         setDaysToNajam(diffInDays)
       },[])    
@@ -28,7 +28,6 @@ const MojiNajmoviItem = (props) => {
       const handleOtkazivanje = () => {
         if(daysToNajam <= 5){
             clickCount = clickCount + 1;
-            console.log(clickCount);
         }
         if(daysToNajam > 5) clickCount = 2;
 
@@ -46,11 +45,8 @@ const MojiNajmoviItem = (props) => {
             notifyPlacanjeKazne();
         }
     }
-
-    console.log(daysToNajam)
-
+    
 return(
-
     <div>
         <div className="borderContainer" >
             <div className="borderLine" />
@@ -64,6 +60,11 @@ return(
             <h4> do {zauzetDo} </h4>
             <div className="vl" />
             <h4> {cijena} € </h4>
+
+    {/**        <Link to={`/urediNajam/${najamId}/${brodId}`} >
+                <button className="urediBttn"> UREDI </button>
+            </Link>
+    */} 
             <button type="submit" onClick={handleOtkazivanje} className="otkaziBttn"> OTKAŽI </button>
         </div>
     </div>

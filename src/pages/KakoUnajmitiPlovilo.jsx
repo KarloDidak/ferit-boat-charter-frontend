@@ -64,6 +64,14 @@ const KakoUnajmitiPlovilo = () => {
 
                     </ol>
 
+                    <h5>
+                    <br/>
+                    KORISNIK MOŽE IMATI VIŠE NAJMOVA, BILI TI NAJMOVI ISTIH ILI RAZLIČITIH BRODOVA.
+                    <br/>
+                    <br/>
+                    ALI NE MOŽE IMATI VIŠE NAJMOVA U ISTIM VREMENSKIM PERIODIMA.    
+                    </h5>
+
                 </div>
 
                     </Row>
