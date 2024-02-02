@@ -1,16 +1,12 @@
 
-import React, {useEffect, useState} from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import React from "react";
+//import { useParams, useNavigate } from "react-router-dom";
+//import axios from "axios";
 
 import "../styles/uredi.css"
 
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
-
 const Uredi = ()=> {
-
-    const navigate = useNavigate();
+/*
     const { slug1, slug2 } = useParams(); // Id najma i Id broda
 
     const korisnikId = localStorage.getItem('userId');
@@ -54,6 +50,8 @@ const Uredi = ()=> {
       });
     }, []);  
     
+*/
+
     return(
 
         <div className="urediNajamContainer">

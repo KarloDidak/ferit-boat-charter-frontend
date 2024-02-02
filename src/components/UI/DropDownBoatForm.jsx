@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
     const[marine,setMarine]=useState([])
 
 useEffect(()=>{
-  fetch("http://localhost:8080/marina/getAll")
+  fetch("http://ferit-boat-charter-backened-production.up.railway.app/marina/getAll")
   .then(res=>res.json())
   .then((result)=>{
 
