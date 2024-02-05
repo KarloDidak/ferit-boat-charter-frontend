@@ -121,7 +121,7 @@ const Register = (props) => {
     const[showPassword, setShowPassword] = useState(false)
 
     useEffect(()=>{
-        fetch("http://ferit-boat-charter-backened-production.up.railway.app/vrsta-korisnika/getAll")
+        fetch("https://ferit-boat-charter-backened-production.up.railway.app/vrsta-korisnika/getAll")
         .then(res=>res.json())
         .then((result)=>{
       
@@ -142,7 +142,7 @@ const Register = (props) => {
           if(validateStatus(status) == true){
           const korisnik = {ime, mail, sifra, status}
           console.log(korisnik);
-          fetch("http://ferit-boat-charter-backened-production.up.railway.app/korisnik/add",{
+          fetch("https://ferit-boat-charter-backened-production.up.railway.app/korisnik/add",{
               method:"POST",
               headers:{"Content-Type":"application/json"},
               body:JSON.stringify(korisnik) 

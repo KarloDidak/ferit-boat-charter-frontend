@@ -34,7 +34,7 @@ const MojiNajmoviItem = (props) => {
        if (clickCount == 2) {
         const data = new FormData();
         data.append("najamId", najamId);
-        fetch("http://ferit-boat-charter-backened-production.up.railway.app/najam/deleteNajam", {
+        fetch("https://ferit-boat-charter-backened-production.up.railway.app/najam/deleteNajam", {
                 method:"POST",
                 body: data,
             }).then(()=>{

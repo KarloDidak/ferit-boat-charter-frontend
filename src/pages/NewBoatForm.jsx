@@ -21,7 +21,7 @@ export default () => {
     const userId =localStorage.getItem('userId')
 
 useEffect(()=>{
-  fetch("http://ferit-boat-charter-backened-production.up.railway.app/vrste-broda/getAll")
+  fetch("https://ferit-boat-charter-backened-production.up.railway.app/vrste-broda/getAll")
   .then(res=>res.json())
   .then((result)=>{
 
@@ -37,7 +37,7 @@ useEffect(()=>{
 const[vrstePosade, setvrstePosade]=useState([])
 
 useEffect(()=>{
-  fetch("http://ferit-boat-charter-backened-production.up.railway.app/vrste-posade/getAll")
+  fetch("https://ferit-boat-charter-backened-production.up.railway.app/vrste-posade/getAll")
   .then(res=>res.json())
   .then((result)=>{
 
@@ -131,9 +131,15 @@ const handleSubmit = (e) => {
     if(validateNewBoatForma() == 1){
     const brod = {ime, cijena, tip, regija, godina,  kabine, lezajevi, posada, motor, gaz, duljinaPrekoSvega, tus, brzina, opis, userId, slobodanOd, slobodanDo}
     console.log(brod);
-    fetch("http://ferit-boat-charter-backened-production.up.railway.app/brod/add",{
+    fetch("https://ferit-boat-charter-backened-production.up.railway.app/brod/add",{
+        
         method:"POST",
-        headers:{"Content-Type":"application/json"},
+        headers:{
+            'Access-Control-Allow-Methods': 'POST, GET',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Origin, Content-Type',
+            'Content-Type':'application/json'
+        },
         body:JSON.stringify(brod) 
     }).then(()=>{
         console.log("DODAN NOVI BROD")

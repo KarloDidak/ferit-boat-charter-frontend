@@ -19,7 +19,7 @@ const DozvolaAdd = (ime) => {
 
     const dohvacanjePostojeceDozvole = {
         method:"GET",
-        url: "http://ferit-boat-charter-backened-production.up.railway.app/korisnik/provjeraDozvoleKorisnika",
+        url: "https://ferit-boat-charter-backened-production.up.railway.app/korisnik/provjeraDozvoleKorisnika",
         params:{
             id: userId
         }
@@ -42,7 +42,7 @@ const handleSubmitDozvola = (e) => {
     data.append("image", file);
     data.append("id", userId);
     console.log("Slika se krece dodavat...");
-    fetch("http://ferit-boat-charter-backened-production.up.railway.app/korisnik/addDozvola", {
+    fetch("https://ferit-boat-charter-backened-production.up.railway.app/korisnik/addDozvola", {
             method:"POST",
             body: data,
         }).then(()=>{

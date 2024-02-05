@@ -18,7 +18,7 @@ const handleSubmitPic = (e) => {
     data.append("image", file);
     data.append("name", slug);
     console.log("Slika se krece dodavat...");
-    fetch("http://ferit-boat-charter-backened-production.up.railway.app/brod/addSlikaToBrod", {
+    fetch("https://ferit-boat-charter-backened-production.up.railway.app/brod/addSlikaToBrod", {
             method:"POST",
             body: data,
         }).then(()=>{
