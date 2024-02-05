@@ -25,7 +25,7 @@ const Kosarica = () => {
 
     const getBrod = {
         method:"GET",
-        url: "http://ferit-boat-charter-backened-production.up.railway.app/brod/getBrodWithName",
+        url: "https://ferit-boat-charter-backened-production.up.railway.app/brod/getBrodWithName",
         params:{ime: slug1},
       }
     
@@ -44,7 +44,7 @@ const Kosarica = () => {
 
     const getNajmovi = {
         method:"GET",
-        url: "http://ferit-boat-charter-backened-production.up.railway.app/najam/getNajamWithBrodId",
+        url: "https://ferit-boat-charter-backened-production.up.railway.app/najam/getNajamWithBrodId",
         params:{brodId: brodId},
       }
     
@@ -61,7 +61,7 @@ const Kosarica = () => {
 
     const dohvacanjeUserNajam = {
       method:"GET",
-      url: "http://ferit-boat-charter-backened-production.up.railway.app/najam/getNajamWithUserId",
+      url: "https://ferit-boat-charter-backened-production.up.railway.app/najam/getNajamWithUserId",
       params:{
           korisnikId: korisnikId
       }
@@ -140,7 +140,7 @@ const Kosarica = () => {
         e.preventDefault();
         if(validateHandleSubmitNajam() == 1){
         const najam = {brodId, zauzetOd, zauzetDo, korisnikId, cijena}
-        fetch("http://ferit-boat-charter-backened-production.up.railway.app/najam/add",{
+        fetch("https://ferit-boat-charter-backened-production.up.railway.app/najam/add",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(najam) 

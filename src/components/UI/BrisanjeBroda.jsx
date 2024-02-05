@@ -13,7 +13,7 @@ const BrisanjeBroda = (ime) => {
     const data = new FormData();
     data.append("name", ime.ime);
     console.log("Slika se krece brisat...");
-    fetch("http://ferit-boat-charter-backened-production.up.railway.app/brod/deleteBrod", {
+    fetch("https://ferit-boat-charter-backened-production.up.railway.app/brod/deleteBrod", {
             method:"POST",
             body: data,
         }).then(()=>{

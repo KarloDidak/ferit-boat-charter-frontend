@@ -68,7 +68,7 @@ const Login = (props) => {
 
     const getUserId = {
         method:"GET",
-        url: "http://ferit-boat-charter-backened-production.up.railway.app/korisnik/getUserId",
+        url: "https://ferit-boat-charter-backened-production.up.railway.app/korisnik/getUserId",
         params:{
             email: email,
             pass: pass
@@ -78,10 +78,10 @@ const Login = (props) => {
 
     const checkIfUserExist = {
         method:"GET",
-        url: "http://ferit-boat-charter-backened-production.up.railway.app/korisnik/checkIfUserExistandGetUserStatus",
-        headers:{
+        url: "https://ferit-boat-charter-backened-production.up.railway.app/korisnik/checkIfUserExistandGetUserStatus",
+     /*   headers:{
             'Access-Control-Allow-Origin': '*'
-        },
+        },*/
         params:{
             email: email,
             pass: pass

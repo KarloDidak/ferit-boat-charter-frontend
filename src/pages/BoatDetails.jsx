@@ -21,7 +21,7 @@ const BoatDetails = () => {
 
   const getBrod = {
     method:"GET",
-    url: "http://ferit-boat-charter-backened-production.up.railway.app/brod/getBrodWithName",
+    url: "https://ferit-boat-charter-backened-production.up.railway.app/brod/getBrodWithName",
     params:{ime: slug1},
   }
 
