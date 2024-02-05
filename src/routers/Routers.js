@@ -22,7 +22,7 @@ import Uredi from "../pages/Uredi";
 const Routers = () => {
     return (
         <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/*" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home/>} />
             <Route path="/boats" element={<BoatListing />} />
             <Route path="/contact" element={<Contact/>} />
