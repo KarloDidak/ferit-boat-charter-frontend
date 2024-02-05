@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import "../styles/prije-kosarice.css"
 import { useParams, useNavigate } from "react-router-dom";
+import { dateToNumber } from "../hooks/dateChangers";
 
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -92,12 +93,14 @@ const Kosarica = () => {
     }
 
     var date = new Date();
+    var today = dateToNumber(Date());
     const datesExcludeSlobodanOd  = getDatesInbetween(new Date(date.getFullYear(), date.getMonth(), 1), compareDate1)
     const datesExcludeSlobodanDo = getDatesInbetween(compareDate2, date.setMonth(date.getMonth() + 6))
 
     const [finalExclude, setFinalExclude] = useState([]);
 
     var finalEx = [];
+    finalEx = finalEx.concat(today);
 
         useEffect(() => {
           var tmp = [...datesExcludeSlobodanOd, ...datesExcludeSlobodanDo]
@@ -154,10 +157,14 @@ const Kosarica = () => {
       useEffect(() => {
         var diffInMilliseconds = Math.abs(zauzetDo - zauzetOd);
         var diffInDays  = Math.ceil(diffInMilliseconds / (1000 * 60 * 60 * 24));
-        setCijena(brod.cijena * diffInDays)
+        if (diffInDays == 0) {
+          setCijena(brod.cijena)
+        }else {
+          setCijena(brod.cijena * diffInDays)
+        }
       },[zauzetDo])
 
-  
+
     return(
     <form>
         <div className="prijeKosarice-container">

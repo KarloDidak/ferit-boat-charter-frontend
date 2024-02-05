@@ -131,8 +131,7 @@ const handleSubmit = (e) => {
     if(validateNewBoatForma() == 1){
     const brod = {ime, cijena, tip, regija, godina,  kabine, lezajevi, posada, motor, gaz, duljinaPrekoSvega, tus, brzina, opis, userId, slobodanOd, slobodanDo}
     console.log(brod);
-    fetch("https://ferit-boat-charter-backened-production.up.railway.app/brod/add",{
-        
+    fetch("https://ferit-boat-charter-backened-production.up.railway.app/brod/add",{        
         method:"POST",
         headers:{
             'Access-Control-Allow-Methods': 'POST, GET',
