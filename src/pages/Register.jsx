@@ -68,8 +68,6 @@ export function validate(value) {
             console.log("Duzina: KRATKO")
           }
 
-          console.log("GOVNO")
-
           if ((lowerCheck && upperCheck && numberCheck && specialCheck && lengthCheck) == false) {
             notifySifra();
             return false;
@@ -98,35 +96,6 @@ export function validateMail(tempMail){
     notifyMail();
     return false;
   }
-}
-
-export function validateMailPrijeKoristen(korisnik){
-  
-  const provjeraKoristenjaMaila = {
-    method:"GET",
-    url: "https://ferit-boat-charter-backened-production.up.railway.app/korisnik/checkIfAlreadyRegistered",
-    params:{email: korisnik.mail}
-  }
-
-  axios.request(provjeraKoristenjaMaila).then((response) => {
-    if (response.data == true) {
-      notifyMailVecKoristen();
-    }else if (response.data == false) {
-      fetch("https://ferit-boat-charter-backened-production.up.railway.app/korisnik/add",{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(korisnik) 
-      }).then(()=>{
-        notifySucces();
-        console.log("New KORISNIK added")
-        window.location.reload()
-      })
-    }
-  }).catch((error) => {
-    console.error(error);
-  })
-  
-
 }
 
 
@@ -173,10 +142,30 @@ const Register = () => {
             if(validate(sifra) == true) {
               if(validateStatus(status) == true){
                 const korisnik = {ime, mail, sifra, status}
-                if(validateMailPrijeKoristen(korisnik)==false) {
-                  navigate('/prijava')
+                  const provjeraKoristenjaMaila = {
+                    method:"GET",
+                    url: "https://ferit-boat-charter-backened-production.up.railway.app/korisnik/checkIfAlreadyRegistered",
+                    params:{email: mail}
+                  }
+                
+                  axios.request(provjeraKoristenjaMaila).then((response) => {
+                    if (response.data == true) {
+                      notifyMailVecKoristen();
+                    }else if (response.data == false) {
+                      fetch("https://ferit-boat-charter-backened-production.up.railway.app/korisnik/add",{
+                        method:"POST",
+                        headers:{"Content-Type":"application/json"},
+                        body:JSON.stringify(korisnik) 
+                      }).then(()=>{
+                        notifySucces();
+                        console.log("New KORISNIK added")
+                        navigate('/prijava')
+                      })
+                    }
+                  }).catch((error) => {
+                    console.error(error);
+                  })
               }
-            }
           }
         }
       }
