@@ -28,12 +28,13 @@ const quickLinks = [
 ];
 
 const Footer = () => {
+
   const date = new Date();
-  const year = date.getFullYear();
+
   return (
     <footer className="footer">
       <Container>
-        <Row>
+        <Row className="footer-row" >
           <Col lg="4" md="4" sm="12">
             <div className="logo footer__logo">
               <h1>
@@ -80,8 +81,8 @@ const Footer = () => {
           <Col lg="12">
             <div className="footer__bottom">
               <p className="section__description d-flex align-items-center justify-content-center gap-1 pt-4">
-                <i class="ri-copyright-line"></i>Copyright {year}, Developed by
-                Karlo Didak. All rights reserved.
+                <i class="ri-copyright-line"></i>Developed by
+                Karlo Didak.
               </p>
             </div>
           </Col>

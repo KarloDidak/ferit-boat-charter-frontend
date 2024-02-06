@@ -2,6 +2,14 @@
   background: #000d6b;
   padding-top: 50px;
   padding-bottom: 15px;
+
+  
+}
+
+.footer-row{
+  display: flex;
+  flex-direction: row; 
+  column-gap: 150px
 }
 
 .footer__logo i {
