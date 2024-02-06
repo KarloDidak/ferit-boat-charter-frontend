@@ -1,9 +1,8 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import "../../styles/picadd.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../../styles/postavljanje-dozvole.css";
-import { MyContext } from "../../App";
 import axios from "axios";
 
 const DozvolaAdd = (ime) => {

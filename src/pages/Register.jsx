@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Select from 'react-select'
 import "../styles/login-register.css"
+import axios from "axios";
 
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
@@ -9,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css'
 const notifySucces = () => toast.success("Uspješno ste registrirani!")
 const notifyIme = () => toast.error("Morate popuniti polje Ime i prezime")
 const notifyMail= () => toast.error("Email mora biti odgovarajućeg formata!")
+const notifyMailVecKoristen= () => toast.error("Ovaj email je vec korišten!")
 const notifySifra = () => toast.warning("Šifra mora biti duga bar 8 znakova.\n" +
                         "Imati bar 1 malo slovo\n, 1 veliko slovo,\n 1 broj\n i jedan specijalni znak\n.")
 const notifyVrstaRacuna = () => toast.warning("Morate odabrati jednu vrstu računa")
@@ -66,6 +68,8 @@ export function validate(value) {
             console.log("Duzina: KRATKO")
           }
 
+          console.log("GOVNO")
+
           if ((lowerCheck && upperCheck && numberCheck && specialCheck && lengthCheck) == false) {
             notifySifra();
             return false;
@@ -96,6 +100,36 @@ export function validateMail(tempMail){
   }
 }
 
+export function validateMailPrijeKoristen(korisnik){
+  
+  const provjeraKoristenjaMaila = {
+    method:"GET",
+    url: "https://ferit-boat-charter-backened-production.up.railway.app/korisnik/checkIfAlreadyRegistered",
+    params:{email: korisnik.mail}
+  }
+
+  axios.request(provjeraKoristenjaMaila).then((response) => {
+    if (response.data == true) {
+      notifyMailVecKoristen();
+    }else if (response.data == false) {
+      fetch("https://ferit-boat-charter-backened-production.up.railway.app/korisnik/add",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(korisnik) 
+      }).then(()=>{
+        notifySucces();
+        console.log("New KORISNIK added")
+        window.location.reload()
+      })
+    }
+  }).catch((error) => {
+    console.error(error);
+  })
+  
+
+}
+
+
 export function validateImeiPrezime(tempImeiPrezime){
   if(tempImeiPrezime.length == 0){
     notifyIme();
@@ -105,8 +139,7 @@ export function validateImeiPrezime(tempImeiPrezime){
   }
 }
 
-
-const Register = (props) => {  
+const Register = () => {  
   
     const navigate = useNavigate();
 
@@ -124,7 +157,6 @@ const Register = (props) => {
         fetch("https://ferit-boat-charter-backened-production.up.railway.app/vrsta-korisnika/getAll")
         .then(res=>res.json())
         .then((result)=>{
-      
           let temp = result.map((d) => ({
             value: d.id,
             label: d.naziv
@@ -137,24 +169,17 @@ const Register = (props) => {
 
     const handleSubmit = () => {
       if(validateImeiPrezime(ime) == true){
-      if(validateMail(mail)==true){
-        if(validate(sifra) == true) {
-          if(validateStatus(status) == true){
-          const korisnik = {ime, mail, sifra, status}
-          console.log(korisnik);
-          fetch("https://ferit-boat-charter-backened-production.up.railway.app/korisnik/add",{
-              method:"POST",
-              headers:{"Content-Type":"application/json"},
-              body:JSON.stringify(korisnik) 
-          }).then(()=>{
-              notifySucces();
-              console.log("New KORISNIK added")
-              navigate('/prijava')
-          })
+        if(validateMail(mail)==true){
+            if(validate(sifra) == true) {
+              if(validateStatus(status) == true){
+                const korisnik = {ime, mail, sifra, status}
+                if(validateMailPrijeKoristen(korisnik)==false) {
+                  navigate('/prijava')
+              }
+            }
+          }
+        }
       }
-    }
-  }
-  }
     }
 
     return(
