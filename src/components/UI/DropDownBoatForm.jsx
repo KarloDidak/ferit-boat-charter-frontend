@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
     const[marine,setMarine]=useState([])
 
 useEffect(()=>{
-  fetch("http://ferit-boat-charter-backened-production.up.railway.app/marina/getAll")
+  fetch("https://ferit-boat-charter-backened-production.up.railway.app/marina/getAll")
   .then(res=>res.json())
   .then((result)=>{
 
@@ -31,7 +31,7 @@ useEffect(()=>{
 const[vrsteBroda, setVrsteBroda]=useState([])
 
 useEffect(()=>{
-  fetch("http://ferit-boat-charter-backened-production.up.railway.app/vrste-broda/getAll")
+  fetch("https://ferit-boat-charter-backened-production.up.railway.app/vrste-broda/getAll")
   .then(res=>res.json())
   .then((result)=>{
 
