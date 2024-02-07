@@ -51,7 +51,10 @@ const Login = (props) => {
           }).catch((error) => {
             console.error(error);
           })
-            //window.location.reload()
+            setTimeout(function(){
+                window.location.reload()
+                
+            }, 2500)
             navigate("/home")
         }
         else { notifyNePostojiKorisnik()}
