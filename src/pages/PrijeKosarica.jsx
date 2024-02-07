@@ -1,7 +1,7 @@
 
 import React from "react";
 import DozvolaAdd from "../components/UI/DozvolaAdd";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 const PrijeKosarica = () => {

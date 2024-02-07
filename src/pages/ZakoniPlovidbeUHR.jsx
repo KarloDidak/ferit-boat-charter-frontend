@@ -1,7 +1,6 @@
 import { Container, Row } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 
-
 const ZakoniPlovidbeUHR = () => {
     return(
 

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 export default () => {
 
-    const { slug } = useParams(); //IME KOJE PRIMAM
+    const { slug } = useParams();
     const navigate = useNavigate();
 
     const notifyNoviBrod = () => toast.info("Dodan novi brod!")

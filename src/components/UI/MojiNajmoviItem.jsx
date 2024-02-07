@@ -3,11 +3,10 @@ import "../../styles/moji-najmovi-item.css";
 
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
-import {Link} from "react-router-dom";
 
 const MojiNajmoviItem = (props) => {
 
-    const {ime, cijena, najamId, brodId, zauzetOd, zauzetDo} = props.item;
+    const {ime, cijena, najamId, zauzetOd, zauzetDo} = props.item;
 
     const notifyUspjesnoOtkazivanjeNajma = () => toast.error("Najam uspješno otkazan!")
     const notifyPlacanjeKazne = () => toast.error("Do najma ima manje od 5 dana! Ako otkažete sad platit će te kaznu otkazivanja.")
