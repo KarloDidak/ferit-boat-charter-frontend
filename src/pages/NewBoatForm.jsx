@@ -3,6 +3,7 @@ import Select from 'react-select'
 import { useNavigate } from "react-router-dom";
 import "../styles/new-boat-form.css"
 import { dateToNumber } from "../hooks/dateChangers";
+import PictureAdd from "../components/UI/PictureAdd";
 
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,6 +12,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
 const notifyPrazno = () => toast.warning("Sva polja moraju biti popunjena!")
+const notifyNoviBrod = () => toast.info("Dodan novi brod!")
 
 export default () => {
 
@@ -62,73 +64,78 @@ const[motor, setMotor]=useState([])
 const[gaz, setGaz]=useState([])
 const[duljinaPrekoSvega, setDuljinaPrekoSvega]=useState([])
 const[tus, setTus]=useState([])
-const[brzina, setBrzina]=useState()
+const[brzina, setBrzina]=useState(null)
 const[opis, setOpis]=useState([])
+const[slika, setSlika] = useState("");
 
 const [dateRange, setDateRange] = useState([null, null]); 
 const [startDate, endDate] = dateRange;
 var slobodanOd = dateToNumber(startDate);
 var slobodanDo = dateToNumber(endDate);
 
+const scrollToTop = () => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+}
 
-function validateNewBoatForma( ){
+const validateNewBoatForma = (e) => {
  
     if (ime.length == 0) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (cijena.length == 0) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (regija.length == 0) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (godina.length == 0) {
         notifyPrazno();
-        return 0;
-    }else if (tip.length == 0) {
+        e.preventDefault();
+    }else if (tip == null) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (kabine.length == 0) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (lezajevi.length == 0) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (posada == null && posada == undefined) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (motor.length == 0) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (gaz.length == 0) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (duljinaPrekoSvega.length == 0) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (tus.length == 0) {
         notifyPrazno();
-        return 0;
-    }else if (brzina.length == 0) {
+        e.preventDefault();
+    }else if (brzina == null) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (opis.length == 0) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (startDate == null) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
     }else if (endDate == null) {
         notifyPrazno();
-        return 0;
+        e.preventDefault();
+    }else {
+        setPromjenaUpisa(false)
     }
-    
-    return 1;
-      }
+}
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    if(validateNewBoatForma() == 1){
+    const [promjenaUpisa, setPromjenaUpisa] = useState(true);
+
+useEffect(() => {
+        if (slika.length != 0) {
     const brod = {ime, cijena, tip, regija, godina,  kabine, lezajevi, posada, motor, gaz, duljinaPrekoSvega, tus, brzina, opis, userId, slobodanOd, slobodanDo}
     console.log(brod);
     fetch("https://ferit-boat-charter-backened-production.up.railway.app/brod/add",{        
@@ -143,18 +150,33 @@ const handleSubmit = (e) => {
     }).then(()=>{
         console.log("DODAN NOVI BROD")
     })
-    navigate(`/dodajSliku/${ime}`);
+
+    const data = new FormData();
+    data.append("image", slika);
+    data.append("name", ime);
+    fetch("https://ferit-boat-charter-backened-production.up.railway.app/brod/addSlikaToBrod", {
+            method:"POST",
+            body: data,
+        }).then(()=>{
+            console.log("SLIKA DODANA")
+        })
+        notifyNoviBrod();
+        navigate('/home');
     }
-  }
+}, [slika])
+
 
     const [isSearchable] = useState(true);
 
     return(
+
         <div className="auth-form-container">
 
-            <h2 className="new-brod-header">Prijava novog broda</h2>
+        {promjenaUpisa ?
+    <>
+        <h2 className="new-brod-header">Prijava novog broda</h2>
         
-          <form className="form-box row g-5" onSubmit={handleSubmit}>
+          <form className="form-box row g-5" >
             <div className="centar">
  
             <div className="col-md-3"> 
@@ -302,16 +324,23 @@ const handleSubmit = (e) => {
             </div>
 
         </div>
-                <div className="col-md-3 full">
-                    <div className="full-small">
-                        <button className="postavi-brod" type="submit">
-                            Postavi
-                        </button>
-                    </div>
-                </div>  
+            <div className="col-md-3 full">
+                <div className="full-small">
+                    <button className="postavi-brod"  onClick={(e) => {validateNewBoatForma(e); scrollToTop();}}>
+                        Dalje
+                    </button>
+                </div>
+            </div>  
         </form>
-        </div> 
-    )
+        </>
+    
+    : <PictureAdd
+        onFinish={(temp) => setSlika(temp)}
+    />
+    
+ }
+    </div> 
 
+    )
 }
 

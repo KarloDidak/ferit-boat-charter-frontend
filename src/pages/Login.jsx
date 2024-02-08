@@ -44,6 +44,11 @@ const Login = (props) => {
                 localStorage.setItem('statusUser', JSON.stringify(response.data))
                 StartgetUserId();
                 notifyUspjesno();
+                setTimeout(function(){
+                    window.location.reload()
+                    
+                }, 2500)
+                navigate("/home")
             } else if (response.data == -1) { 
                 notifyNePostojiKorisnik();
             }
@@ -51,13 +56,9 @@ const Login = (props) => {
           }).catch((error) => {
             console.error(error);
           })
-            setTimeout(function(){
-                window.location.reload()
-                
-            }, 2500)
-            navigate("/home")
+            
         }
-        else { notifyNePostojiKorisnik()}
+
     }
     }
 

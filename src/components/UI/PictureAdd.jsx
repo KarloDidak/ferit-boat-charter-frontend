@@ -1,42 +1,32 @@
 import React, {useState} from "react";
 import "../../styles/picadd.css";
-import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default () => {
+export default ({onFinish}) => {
 
-    const { slug } = useParams();
-    const navigate = useNavigate();
+    const notifyFaliSlika = () => toast.warning("Morate postaviti sliku!")
+    
+    const[file, setFile] = useState("");
 
-    const notifyNoviBrod = () => toast.info("Dodan novi brod!")
+    function handleFileChange(e){
+        if(e.target.files && e.target.files[0]) setFile(e.target.files[0]);
+    }
 
-   const[file, setFile] = useState("");
-
-const handleSubmitPic = (e) => {
+   const handleSubmitPic = (e) => {
     e.preventDefault()
-    const data = new FormData();
-    data.append("image", file);
-    data.append("name", slug);
-    console.log("Slika se krece dodavat...");
-    fetch("https://ferit-boat-charter-backened-production.up.railway.app/brod/addSlikaToBrod", {
-            method:"POST",
-            body: data,
-        }).then(()=>{
-            console.log("SLIKA DODANA")
-        })
-        notifyNoviBrod();
-        navigate('/home');
-}
-
-function handleFileChange(e){
-    if(e.target.files && e.target.files[0]) setFile(e.target.files[0]);
-}
+    if (file.length != 0){ 
+        onFinish(file)
+     } else{
+        notifyFaliSlika();
+     }
+    }   
 
 return(
     <>
+    <h1 className="headerPicAdd" >Dodaj sliku broda</h1>
   <form  className="postavljanjeSlika" onSubmit={handleSubmitPic} encType="multipart/form-data">
      <input className="odabiranjeSlikeBttn" type="file" name="file" onChange={handleFileChange} />
-      <button type="submit" className="postavljanjeSlikaBttn"> Submit</button>  
+      <button type="submit" className="postavljanjeSlikaBttn"> Postavi</button>  
     </form>
     </>
 )

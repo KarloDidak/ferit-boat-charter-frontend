@@ -40,7 +40,6 @@ const handleSubmitDozvola = (e) => {
     const data = new FormData();
     data.append("image", file);
     data.append("id", userId);
-    console.log("Slika se krece dodavat...");
     fetch("https://ferit-boat-charter-backened-production.up.railway.app/korisnik/addDozvola", {
             method:"POST",
             body: data,
@@ -65,7 +64,8 @@ function handleFileChange(e){
             <>
             <h4 className="dozvolaTextHeader" > Već imamo vašu dozvolu. Ako želite postaviti drugu, možete. <br/> <br/> Inaće kliknite tipku DALJE. </h4>
             </>
-            : <h3 className="dozvolaTextHeader"> Postavite sliku svoje dozvole za upravljanje brodom. <br/> <br/> Odabrali ste brod bez posade. </h3>}
+            : <h3 className="dozvolaTextHeader"> Postavite sliku svoje dozvole za upravljanje brodom. <br/> <br/> Odabrali ste brod bez posade. </h3>
+            }
         </div>
     <form className="postavljanjeDozvole" onSubmit={handleSubmitDozvola} encType="multipart/form-data">
         <input className="odabiranjeSlikeBttn" id="dozvolaInput" type="file" name="file" onChange={handleFileChange} />

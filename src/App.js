@@ -1,4 +1,4 @@
-import React, {createContext, useState, useEffect} from 'react';
+import React, {createContext, useState} from 'react';
 import { ToastContainer } from 'react-toastify';
 import Layout from './components/Layout/Layout';
 

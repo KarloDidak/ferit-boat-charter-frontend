@@ -1,3 +1,8 @@
+.headerPicAdd{
+    display: flex;    
+    justify-content: center;
+}
+
 
 .postavljanjeSlika{
     margin-top: 10%;
