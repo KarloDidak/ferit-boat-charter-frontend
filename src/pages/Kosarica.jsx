@@ -93,9 +93,11 @@ const Kosarica = () => {
     }
 
     var date = new Date();
+    var date2 = new Date();
     var today = dateToNumber(Date());
-    const datesExcludeSlobodanOd  = getDatesInbetween(new Date(date.getFullYear(), date.getMonth(), 1), compareDate1)
+    const datesExcludeSlobodanOd  = getDatesInbetween(new Date(date.getFullYear(), date.getMonth()-2, 1), compareDate1)
     const datesExcludeSlobodanDo = getDatesInbetween(compareDate2, date.setMonth(date.getMonth() + 6))
+    const datesExludeBeforeToday = getDatesInbetween(compareDate1, new Date())
 
     const [finalExclude, setFinalExclude] = useState([]);
 
@@ -104,6 +106,7 @@ const Kosarica = () => {
 
         useEffect(() => {
           var tmp = [...datesExcludeSlobodanOd, ...datesExcludeSlobodanDo]
+          var tmp2 = [...tmp, ...datesExludeBeforeToday]
             if(najmovi !== undefined){    
                 for (let index = 0; index < najmovi.length; index++) {
                     var zauzetOdTemp = new Date(najmovi[index].zauzetOd)
@@ -122,7 +125,7 @@ const Kosarica = () => {
               }
           }
 
-          setFinalExclude([...finalEx,...tmp])
+          setFinalExclude([...finalEx, ...tmp2])
         }, [najmovi])
 
 

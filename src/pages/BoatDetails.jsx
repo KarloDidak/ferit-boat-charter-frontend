@@ -44,9 +44,10 @@ const BoatDetails = () => {
     }
 },[])
 
+
 useEffect(() => {
   if (tempStatus == 1) {
-    setLook1(<IznajmitButton ime={slug1}/>) 
+    setLook1(<IznajmitButton ime={slug1} posada={brod.posada}/>) 
   }
 },[brod])
   
@@ -98,7 +99,6 @@ useEffect(() => {
                 <p className="section__description">
                   {brod.opis}
                 </p>
-
            </div>
             </Col>
 

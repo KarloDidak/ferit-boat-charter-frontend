@@ -1,10 +1,20 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, {useEffect, useState} from 'react';
+import {Link} from "react-router-dom"
 
-const IznajmitButton = (ime) => {
+const IznajmitButton = ({ime, posada}) => {
+
+    const [urlNajam, setUrlNajam] = useState();
+
+    useEffect(() => { 
+    if (posada == "bez posade") {
+        setUrlNajam(`/prijeKosarica/${ime}`)
+    }else {
+        setUrlNajam(`/kosarica/${ime}`)
+    }
+},[posada])
 
     return(
-        <Link to={`/prijeKosarica/${ime.ime}`}>
+        <Link to={urlNajam}>
             <button className="contact-button">UNAJMI BRODICU</button>
         </Link>
     )    
