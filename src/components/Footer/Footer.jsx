@@ -11,12 +11,6 @@ const quickLinks = [
     path: "/about",
     display: "O nama",
   },
-
-  {
-    path: "#",
-    display: "Korisni linkovi",
-  },
-
   {
     path: "/boats",
     display: "Brodovi",

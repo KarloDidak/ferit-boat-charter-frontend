@@ -7,6 +7,7 @@ import axios from "axios";
 const BoatListing = () => {
 
   const[brod,setBrod]=useState([])
+  const[backup, setBackup] = useState(true)
 
   useEffect(()=>{
     var url = new URL(window.location.href);
@@ -19,6 +20,7 @@ const BoatListing = () => {
        axios.get("https://ferit-boat-charter-backened-production.up.railway.app/brod/getBrodForSearchForm",{
         params:{tip_broda:vrstaBroda, regija:marina, slobodanOd:datOd, slobodanDo:datDo }
       }).then((response) => {setBrod(response.data);
+      if(response.data.length == 0) setBackup(false)
       console.log(response)}) 
     }
     else{
@@ -39,6 +41,8 @@ const BoatListing = () => {
             {brod.map((item) => (
               <BoatItem item={item} key={item.id} />
             ))}
+
+            {backup ? <p></p> : <h5 className="najamContainer" id="nemaRezervacije">NEMA BRODICE KOJA ZADOVOLJAVA PARAMETRE</h5>}
           </Row>
         </Container>
       </section>
