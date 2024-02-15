@@ -98,7 +98,7 @@ const Login = (props) => {
             <h2 className="form-header" >Prijava</h2>
             <form className="login-form" onSubmit={handleSubmit} >
                 <label className="log-reg-label" htmlFor="email"> Email </label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)}  placeholder="Vaš email" id="email" name="email"/>
+                <input value={email} onChange={(e) => setEmail(e.target.value)}  placeholder="Vaš email" id="email" name="email" maxLength={100}/>
                 <label className="log-reg-label" htmlFor="password"> Šifra </label>
                 <input 
                     value={pass} 
@@ -107,6 +107,7 @@ const Login = (props) => {
                     placeholder="*******" 
                     id="password" 
                     name="password"
+                    maxLength={100}
                 />
                 <label className="showpass"> Prikazi šifru 
                     <input

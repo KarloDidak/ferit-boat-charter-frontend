@@ -176,11 +176,11 @@ const Register = () => {
         <div className="auth-form-container"> 
         <h2 className="form-header" >Registracija</h2>
             <label className="log-reg-label" htmlFor="name" >Ime i prezime</label>
-            <input type="text" value={ime} onChange={(e) => setIme(e.target.value)} name="ime" id="name" placeholder="Vaše ime i prezime"></input>
+            <input type="text" value={ime} onChange={(e) => setIme(e.target.value)} name="ime" id="name" placeholder="Vaše ime i prezime" maxLength={100}></input>
             <label className="log-reg-label" htmlFor="email"> Email </label>
-            <input value={mail} onChange={(e) => setMail(e.target.value)} type="email" placeholder="Vaš email" id="mail" name="mail"/>
+            <input value={mail} onChange={(e) => setMail(e.target.value)} type="email" placeholder="Vaš email" id="mail" name="mail" maxLength={100} />
             <label className="log-reg-label" htmlFor="password"> Šifra </label>
-            <input value={sifra} onChange={(e) => setSifra(e.target.value)} type={showPassword ? "text" : "password"} placeholder="*******" id="sifra" name="sifra"/>
+            <input value={sifra} onChange={(e) => setSifra(e.target.value)} type={showPassword ? "text" : "password"} placeholder="*******" id="sifra" name="sifra" maxLength={100}/>
             <label className="showpass"> Prikazi šifru 
                     <input
                         id="check"
