@@ -7,10 +7,10 @@ const BoatItem = (props) => {
   const {ime, cijena, godina, regija, posada, slika, userId} = props.item;
 
   return (
-    <Col lg="3" md="4"  className="mb-5">
+    <Col lg="3" md="4"  className="mb-5" >
       <div className="boat__item">
         <div>
-          <img src={`data:image/jpeg;base64,${slika}`} alt="brod" className="w-100" />
+          <img src={`data:image/jpeg;base64,${slika}`} alt="brod" className="w-100" id="boat-item-pic"/>
         </div>   
 
         <div className="boat__item-content mt-4">

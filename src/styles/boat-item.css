@@ -1,6 +1,13 @@
+
 .boat__item {
   border: 1px solid #000d6b;
   border-radius: 5px;
+}
+
+#boat-item-pic{
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+/* height: 210px; */
 }
 
 .boat__item-btn {
